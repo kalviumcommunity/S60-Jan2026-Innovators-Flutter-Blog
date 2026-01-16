@@ -1,0 +1,457 @@
+{
+  "info": {
+    "name": "Flutter-Firebase Blog API Documentation",
+    "description": "API documentation for Flutter + Firebase Blog application",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12345678"
+  },
+  "item": [
+    {
+      "name": "Firebase Authentication",
+      "item": [
+        {
+          "name": "User Sign Up",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"securePassword123\"\n}"
+            },
+            "url": {
+              "raw": "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=YOUR_API_KEY",
+              "protocol": "https",
+              "host": ["identitytoolkit", "googleapis", "com"],
+              "path": ["v1", "accounts:signUp"],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "YOUR_API_KEY"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"securePassword123\"\n}"
+                },
+                "url": {
+                  "raw": "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=YOUR_API_KEY",
+                  "protocol": "https",
+                  "host": ["identitytoolkit", "googleapis", "com"],
+                  "path": ["v1", "accounts:signUp"],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "YOUR_API_KEY"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "body": "{\n  \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ...\",\n  \"email\": \"user@example.com\",\n  \"refreshToken\": \"AEwA3p...\",\n  \"expiresIn\": \"3600\",\n  \"localId\": \"ZY1rp...\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "User Sign In",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"securePassword123\",\n  \"returnSecureToken\": true\n}"
+            },
+            "url": {
+              "raw": "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=YOUR_API_KEY",
+              "protocol": "https",
+              "host": ["identitytoolkit", "googleapis", "com"],
+              "path": ["v1", "accounts:signInWithPassword"],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "YOUR_API_KEY"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ...\",\n  \"email\": \"user@example.com\",\n  \"refreshToken\": \"AEwA3p...\",\n  \"expiresIn\": \"3600\",\n  \"localId\": \"ZY1rp...\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "User Sign Out",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://identitytoolkit.googleapis.com/v1/accounts:delete?key=YOUR_API_KEY",
+              "protocol": "https",
+              "host": ["identitytoolkit", "googleapis", "com"],
+              "path": ["v1", "accounts:delete"],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "YOUR_API_KEY"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"kind\": \"identitytoolkit#DeleteAccountResponse\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Firestore - Blog Posts",
+      "item": [
+        {
+          "name": "Create Blog Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fields\": {\n    \"title\": {\"stringValue\": \"My First Blog Post\"},\n    \"content\": {\"stringValue\": \"This is the content of my blog post.\"},\n    \"author\": {\"stringValue\": \"user123\"},\n    \"timestamp\": {\"timestampValue\": \"2025-01-16T10:30:00Z\"},\n    \"likes\": {\"integerValue\": \"0\"}\n  }\n}"
+            },
+            "url": {
+              "raw": "https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/posts",
+              "protocol": "https",
+              "host": ["firestore", "googleapis", "com"],
+              "path": ["v1", "projects", "YOUR_PROJECT_ID", "databases", "(default)", "documents", "posts"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 201,
+              "body": "{\n  \"name\": \"projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123\",\n  \"fields\": {\n    \"title\": {\"stringValue\": \"My First Blog Post\"},\n    \"content\": {\"stringValue\": \"This is the content of my blog post.\"},\n    \"author\": {\"stringValue\": \"user123\"},\n    \"timestamp\": {\"timestampValue\": \"2025-01-16T10:30:00Z\"},\n    \"likes\": {\"integerValue\": \"0\"}\n  },\n  \"createTime\": \"2025-01-16T10:30:00.000Z\",\n  \"updateTime\": \"2025-01-16T10:30:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Blog Posts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              }
+            ],
+            "url": {
+              "raw": "https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/posts",
+              "protocol": "https",
+              "host": ["firestore", "googleapis", "com"],
+              "path": ["v1", "projects", "YOUR_PROJECT_ID", "databases", "(default)", "documents", "posts"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"documents\": [\n    {\n      \"name\": \"projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123\",\n      \"fields\": {\n        \"title\": {\"stringValue\": \"My First Blog Post\"},\n        \"content\": {\"stringValue\": \"This is the content of my blog post.\"},\n        \"author\": {\"stringValue\": \"user123\"},\n        \"timestamp\": {\"timestampValue\": \"2025-01-16T10:30:00Z\"},\n        \"likes\": {\"integerValue\": \"0\"}\n      }\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Single Blog Post",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              }
+            ],
+            "url": {
+              "raw": "https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123",
+              "protocol": "https",
+              "host": ["firestore", "googleapis", "com"],
+              "path": ["v1", "projects", "YOUR_PROJECT_ID", "databases", "(default)", "documents", "posts", "post123"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"name\": \"projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123\",\n  \"fields\": {\n    \"title\": {\"stringValue\": \"My First Blog Post\"},\n    \"content\": {\"stringValue\": \"This is the content of my blog post.\"},\n    \"author\": {\"stringValue\": \"user123\"},\n    \"timestamp\": {\"timestampValue\": \"2025-01-16T10:30:00Z\"},\n    \"likes\": {\"integerValue\": \"0\"}\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Blog Post",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fields\": {\n    \"title\": {\"stringValue\": \"Updated Blog Post Title\"},\n    \"content\": {\"stringValue\": \"Updated content here.\"}\n  }\n}"
+            },
+            "url": {
+              "raw": "https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123",
+              "protocol": "https",
+              "host": ["firestore", "googleapis", "com"],
+              "path": ["v1", "projects", "YOUR_PROJECT_ID", "databases", "(default)", "documents", "posts", "post123"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"name\": \"projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123\",\n  \"fields\": {\n    \"title\": {\"stringValue\": \"Updated Blog Post Title\"},\n    \"content\": {\"stringValue\": \"Updated content here.\"}\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Blog Post",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              }
+            ],
+            "url": {
+              "raw": "https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123",
+              "protocol": "https",
+              "host": ["firestore", "googleapis", "com"],
+              "path": ["v1", "projects", "YOUR_PROJECT_ID", "databases", "(default)", "documents", "posts", "post123"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "No Content",
+              "code": 204
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Firestore - Comments",
+      "item": [
+        {
+          "name": "Add Comment to Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fields\": {\n    \"text\": {\"stringValue\": \"Great post!\"},\n    \"author\": {\"stringValue\": \"user456\"},\n    \"postId\": {\"stringValue\": \"post123\"},\n    \"timestamp\": {\"timestampValue\": \"2025-01-16T11:00:00Z\"}\n  }\n}"
+            },
+            "url": {
+              "raw": "https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123/comments",
+              "protocol": "https",
+              "host": ["firestore", "googleapis", "com"],
+              "path": ["v1", "projects", "YOUR_PROJECT_ID", "databases", "(default)", "documents", "posts", "post123", "comments"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "Created",
+              "code": 201,
+              "body": "{\n  \"name\": \"projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123/comments/comment456\",\n  \"fields\": {\n    \"text\": {\"stringValue\": \"Great post!\"},\n    \"author\": {\"stringValue\": \"user456\"},\n    \"timestamp\": {\"timestampValue\": \"2025-01-16T11:00:00Z\"}\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Comments for Post",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              }
+            ],
+            "url": {
+              "raw": "https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123/comments",
+              "protocol": "https",
+              "host": ["firestore", "googleapis", "com"],
+              "path": ["v1", "projects", "YOUR_PROJECT_ID", "databases", "(default)", "documents", "posts", "post123", "comments"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"documents\": [\n    {\n      \"name\": \"projects/YOUR_PROJECT_ID/databases/(default)/documents/posts/post123/comments/comment456\",\n      \"fields\": {\n        \"text\": {\"stringValue\": \"Great post!\"},\n        \"author\": {\"stringValue\": \"user456\"},\n        \"timestamp\": {\"timestampValue\": \"2025-01-16T11:00:00Z\"}\n      }\n    }\n  ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Firebase Storage - Images",
+      "item": [
+        {
+          "name": "Upload Blog Post Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              }
+            ],
+            "body": {
+              "mode": "file",
+              "file": {
+                "src": "/path/to/image.jpg"
+              }
+            },
+            "url": {
+              "raw": "https://firebasestorage.googleapis.com/v0/b/YOUR_BUCKET_NAME/o?uploadType=media&name=blog_images/post123.jpg",
+              "protocol": "https",
+              "host": ["firebasestorage", "googleapis", "com"],
+              "path": ["v0", "b", "YOUR_BUCKET_NAME", "o"],
+              "query": [
+                {
+                  "key": "uploadType",
+                  "value": "media"
+                },
+                {
+                  "key": "name",
+                  "value": "blog_images/post123.jpg"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"name\": \"blog_images/post123.jpg\",\n  \"bucket\": \"YOUR_BUCKET_NAME\",\n  \"contentType\": \"image/jpeg\",\n  \"timeCreated\": \"2025-01-16T10:30:00.000Z\",\n  \"updated\": \"2025-01-16T10:30:00.000Z\",\n  \"size\": \"512000\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Download URL",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ID_TOKEN"
+              }
+            ],
+            "url": {
+              "raw": "https://firebasestorage.googleapis.com/v0/b/YOUR_BUCKET_NAME/o/blog_images%2Fpost123.jpg?alt=media",
+              "protocol": "https",
+              "host": ["firebasestorage", "googleapis", "com"],
+              "path": ["v0", "b", "YOUR_BUCKET_NAME", "o", "blog_images%2Fpost123.jpg"],
+              "query": [
+                {
+                  "key": "alt",
+                  "value": "media"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "status": "OK",
+              "code": 200,
+              "body": "[Binary image data]"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "YOUR_API_KEY",
+      "value": "YOUR_FIREBASE_API_KEY"
+    },
+    {
+      "key": "YOUR_PROJECT_ID",
+      "value": "YOUR_FIREBASE_PROJECT_ID"
+    },
+    {
+      "key": "YOUR_BUCKET_NAME",
+      "value": "YOUR_FIREBASE_STORAGE_BUCKET"
+    },
+    {
+      "key": "YOUR_ID_TOKEN",
+      "value": "USER_ID_TOKEN_FROM_AUTH"
+    }
+  ]
+}
