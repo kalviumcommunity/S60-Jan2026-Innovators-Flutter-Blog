@@ -1,38 +1,108 @@
-# Responsive Flutter Layout Demo
+# Flutter Firebase Authentication & Firestore Integration
 
-## Overview
-This project demonstrates how to build a responsive Flutter UI that adapts to different screen sizes and orientations using MediaQuery and adaptive widgets.
+## Project Overview
+This project demonstrates the integration of **Firebase Authentication** and **Cloud Firestore** in a Flutter application.  
+The app allows users to **sign up, log in, and log out** using email and password authentication.  
+After logging in, users can **add, view, and delete data in real time** using Firestore.
 
-## Features
-- Single-column layout for phones
-- Two-column grid layout for tablets
-- Responsive text sizing and padding
-- Works in portrait and landscape modes
+This project showcases how Firebase can be used as a backend service for authentication and real-time data storage in Flutter applications.
 
-## MediaQuery Usage
-```dart
-double screenWidth = MediaQuery.of(context).size.width;
-bool isTablet = screenWidth > 600;
+---
+
+## Firebase Features Implemented
+- Email & Password Authentication using Firebase Authentication
+- Real-time data storage using Cloud Firestore
+- CRUD operations (Create, Read, Delete)
+- Live updates using StreamBuilder
+
+---
+
+## Setup Instructions
+
+### 1. Firebase Project Setup
+1. Create a project in **Firebase Console**
+2. Add Android app to Firebase project
+3. Download `google-services.json`
+4. Place it inside: android/app/
+
+
+### 2. Enable Firebase Services
+- Enable **Email/Password Authentication**
+- Enable **Cloud Firestore** (Test Mode)
+
+---
+
+### 3. FlutterFire Configuration
+Run the following commands:
+
+```bash
+dart pub global activate flutterfire_cli
+flutterfire configure
 ```
 
-## Widgets Used
+This generates:
+```bash
+lib/firebase_options.dart
+```
 
-- MediaQuery
+### 4. Dependencies Used
+```bash
+dependencies:
+  firebase_core: ^3.0.0
+  firebase_auth: ^5.0.0
+  cloud_firestore: ^5.0.0
+```
 
-- GridView
+### 5. Firebase Initialization
+```bash
+await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
+```
 
-- Expanded
+## Authentication Logic (Code Snippet)
 
-- Flexible
+```bash
+Future<User?> login(String email, String password) async {
+  try {
+    final result = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+    return result.user;
+  } catch (e) {
+    return null;
+  }
+}
+```
 
-- AspectRatio
+## Firestore Logic (Code Snippet)
+```bash
+Future<void> addNote(String text) async {
+  await FirebaseFirestore.instance
+      .collection('notes')
+      .add({'text': text});
+}
+```
 
-- FittedBox
+### Screenshots
 
-## Screenshots
+![Signup screen with successful user creation](Signup.png)
 
-![Image1](Image1.png)
+![Login screen after authentication](Login.png)
 
-![Image2](Image2.png)
+![Dashboard showing Firestore data](Dashboard.png)
 
-![Image3](Image3.png)
+![Firebase Console Authentication user list](FirebaseAuthentication.png)
+
+
+### Testing Performed
+
+Created a new user using Signup screen
+
+Logged in using registered credentials
+
+Added records to Firestore
+
+Verified real-time updates in Firebase Console
