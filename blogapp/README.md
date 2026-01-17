@@ -1,108 +1,64 @@
-# Flutter Firebase Authentication & Firestore Integration
+# Setting Up Flutter SDK, Android Studio, and First Emulator Run
 
-## Project Overview
-This project demonstrates the integration of **Firebase Authentication** and **Cloud Firestore** in a Flutter application.  
-The app allows users to **sign up, log in, and log out** using email and password authentication.  
-After logging in, users can **add, view, and delete data in real time** using Firestore.
+This readme provides evidence of successful Flutter installation and environment setup.  
+The steps below were followed to install Flutter, configure the development environment, and run the first Flutter application.
 
-This project showcases how Firebase can be used as a backend service for authentication and real-time data storage in Flutter applications.
+## 1. Flutter SDK Installation
 
----
-
-## Firebase Features Implemented
-- Email & Password Authentication using Firebase Authentication
-- Real-time data storage using Cloud Firestore
-- CRUD operations (Create, Read, Delete)
-- Live updates using StreamBuilder
-
----
-
-## Setup Instructions
-
-### 1. Firebase Project Setup
-1. Create a project in **Firebase Console**
-2. Add Android app to Firebase project
-3. Download `google-services.json`
-4. Place it inside: android/app/
-
-
-### 2. Enable Firebase Services
-- Enable **Email/Password Authentication**
-- Enable **Cloud Firestore** (Test Mode)
-
----
-
-### 3. FlutterFire Configuration
-Run the following commands:
+- The Flutter SDK was downloaded from the official Flutter website.
+- The SDK was extracted to a local directory.
+- The `flutter/bin` directory was added to the system PATH environment variable.
+- Installation was verified using the following command:
 
 ```bash
-dart pub global activate flutterfire_cli
-flutterfire configure
+flutter doctor
 ```
 
-This generates:
+This command confirmed that Flutter is correctly installed and highlighted no critical issues in the setup.
+
+### 2. Development Environment Setup
+
+## Android Studio
+
+- Android Studio was installed.
+
+- The following components were enabled:
+
+   -- Android SDK
+
+   -- Android SDK Platform
+
+   -- Android Virtual Device (AVD) Manager
+
+- Flutter and Dart plugins were installed via Plugins → Marketplace.
+
+- Did it in VS code
+
+### 3. Emulator Configuration
+
+- An Android Virtual Device was created using AVD Manager.
+
+- Emulator was launched successfully.
+
+- Device detection was verified using:
+
 ```bash
-lib/firebase_options.dart
+flutter devices
 ```
 
-### 4. Dependencies Used
-```bash
-dependencies:
-  firebase_core: ^3.0.0
-  firebase_auth: ^5.0.0
-  cloud_firestore: ^5.0.0
-```
-
-### 5. Firebase Initialization
-```bash
-await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
-```
-
-## Authentication Logic (Code Snippet)
+### 4. Flutter Application
+The project was opened in the IDE and executed using:
 
 ```bash
-Future<User?> login(String email, String password) async {
-  try {
-    final result = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
-    return result.user;
-  } catch (e) {
-    return null;
-  }
-}
+flutter run
 ```
 
-## Firestore Logic (Code Snippet)
-```bash
-Future<void> addNote(String text) async {
-  await FirebaseFirestore.instance
-      .collection('notes')
-      .add({'text': text});
-}
-```
+The default Flutter counter application launched successfully on the Android emulator.
 
 ### Screenshots
 
-![Signup screen with successful user creation](Signup.png)
+Flutter Doctor Output
+![Flutter Doctor Output](FlutterDoctor.png)
 
-![Login screen after authentication](Login.png)
-
-![Dashboard showing Firestore data](Dashboard.png)
-
-![Firebase Console Authentication user list](FirebaseAuthentication.png)
-
-
-### Testing Performed
-
-Created a new user using Signup screen
-
-Logged in using registered credentials
-
-Added records to Firestore
-
-Verified real-time updates in Firebase Console
+Flutter Application Running
+![Flutter Application Running](Emulator.png)
