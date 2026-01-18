@@ -1,40 +1,37 @@
-# Using Hot Reload, Debug Console, and Flutter DevTools Effectively
+# Structuring Multi-Screen Navigation Using Navigator and Routes
 
-## Description
-This project demonstrates Flutter Hot Reload, Debug Console logging,
-and Flutter DevTools for efficient development.
+## Summary
+This project demonstrates multi-screen navigation in Flutter using
+Navigator and named routes.
 
-## Hot Reload
-- App was run using flutter run
-- UI text was changed
-- Hot Reload applied without restarting the app
+## Screens
+- HomeScreen
+- SecondScreen
 
-## Debug Console
-- debugPrint() used to log counter updates
-- Logs were visible during runtime
+## Navigation
+- Navigator.pushNamed() used to navigate forward
+- Navigator.pop() used to return to previous screen
 
-## Flutter DevTools
-- Widget Inspector used to inspect widget tree
-- UI components highlighted interactively
+## Routes
+Routes are defined in main.dart using MaterialApp routes map.
 
 ## Screenshots
 
-Hot Reload Terminal
+- Home Screen
 
-![Hot Reload](HotReloadTerminal.png)
+![Home Screen](HomeScreen.png)
 
-Before Hot Reload
+- Second Screen
 
-![Before Hot Reload](CounterInitial_ui.png)
+![Second Screen](SecondScreen.png)
 
-HotReloadOutput
+- Navigation flow
 
-![Hot Reload](HotReloadOutput.png)
-
-Debug Console
-
-![Debug Console](DebugConsole.png)
+![Navigation flow](NavigationFlow.png)
 
 ## Reflection
-Hot Reload improves productivity by instantly applying UI changes.
-Flutter DevTools helps debug and optimize applications effectively.
+Navigator manages screens using a stack structure where new screens
+are pushed and popped.
+
+Named routes improve scalability and readability in large applications
+by centralizing navigation logic.
