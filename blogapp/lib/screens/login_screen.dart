@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import 'signup_screen.dart';
 import 'dashboard_screen.dart';
+import 'stateless_stateful_demo.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -51,6 +52,17 @@ class LoginScreen extends StatelessWidget {
                 );
               },
               child: const Text("Create Account"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const StatelessStatefulDemo(),
+                  ),
+                );
+              },
+              child: const Text('Open Stateless vs Stateful Demo'),
             ),
           ],
         ),

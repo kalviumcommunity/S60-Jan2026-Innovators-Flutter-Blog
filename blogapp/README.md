@@ -1,31 +1,47 @@
-# Understanding the Widget Tree and Flutter's Reactive UI Model
+# Creating and Using Stateless and Stateful Widgets
 
-This project demonstrates Flutter’s widget tree structure and reactive UI model using a simple counter application.
+This Flutter app demonstrates the difference between Stateless and Stateful widgets using a simple counter example.
 
-## Widget Tree Hierarchy
+## Explanation
 
-MaterialApp  
- ┗ Scaffold  
-    ┣ AppBar  
-    ┗ Body  
-       ┗ Center  
-          ┗ Column  
-             ┣ Text  
-             ┗ ElevatedButton  
+### Stateless Widget
+A StatelessWidget does not hold any mutable state.
+It is used for static UI elements like titles or labels.
+
+### Stateful Widget
+A StatefulWidget maintains state that can change during runtime.
+It rebuilds the UI using setState().
+
+## Code Snippets
+
+### Stateless Widget Example
+```dart
+class DemoHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text('Interactive Counter App');
+  }
+}
+```
+
+### Stateful Widget Example
+```dart
+class CounterSection extends StatefulWidget {
+  @override
+  State<CounterSection> createState() => _CounterSectionState();
+}
+```
 
 ## Screenshots
 
-### Initial UI State
-![Before](CounterBefore.png)
+### Initial UI
+![Initial UI](CounterInitial_ui.png)
 
-### After State Update
-![After](CounterAfter.png)
+### After Button Click
+![After Interaction](CounterAfter_click.png)
 
-## What is a Widget Tree?
-A widget tree is the hierarchical structure of widgets in Flutter. Every UI element in Flutter is a widget, and widgets are nested inside each other to form the UI.
 
-## How does the Reactive Model work in Flutter?
-Flutter uses a reactive UI model. When the state changes using `setState()`, Flutter rebuilds the widgets that depend on that state.
+## Reflection
 
-## Why does Flutter rebuild only parts of the UI?
-Flutter optimizes performance by rebuilding only the widgets whose state has changed instead of redrawing the entire screen.
+Stateful widgets make Flutter apps dynamic by allowing the UI to react to user interactions.
+Separating static and reactive UI improves performance, readability, and maintainability.
