@@ -3,6 +3,7 @@ import '../services/auth_service.dart';
 import 'signup_screen.dart';
 import 'dashboard_screen.dart';
 import 'stateless_stateful_demo.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -63,6 +64,15 @@ class LoginScreen extends StatelessWidget {
                 );
               },
               child: const Text('Open Stateless vs Stateful Demo'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              },
+              child: const Text('Open Navigation Demo'),
             ),
           ],
         ),
