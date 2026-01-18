@@ -7,7 +7,7 @@ class DemoHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      'Interactive Counter App',
+      'Welcome to Hot Reload!',
       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
     );
   }
@@ -24,9 +24,15 @@ class CounterSection extends StatefulWidget {
 class _CounterSectionState extends State<CounterSection> {
   int count = 0;
 
+  // void incrementCounter() {
+  //   setState(() {
+  //     count++;
+  //   });
+  // }
   void incrementCounter() {
     setState(() {
       count++;
+      debugPrint('Count updated to $count');
     });
   }
 
