@@ -1,47 +1,40 @@
-# Creating and Using Stateless and Stateful Widgets
+# Using Hot Reload, Debug Console, and Flutter DevTools Effectively
 
-This Flutter app demonstrates the difference between Stateless and Stateful widgets using a simple counter example.
+## Description
+This project demonstrates Flutter Hot Reload, Debug Console logging,
+and Flutter DevTools for efficient development.
 
-## Explanation
+## Hot Reload
+- App was run using flutter run
+- UI text was changed
+- Hot Reload applied without restarting the app
 
-### Stateless Widget
-A StatelessWidget does not hold any mutable state.
-It is used for static UI elements like titles or labels.
+## Debug Console
+- debugPrint() used to log counter updates
+- Logs were visible during runtime
 
-### Stateful Widget
-A StatefulWidget maintains state that can change during runtime.
-It rebuilds the UI using setState().
-
-## Code Snippets
-
-### Stateless Widget Example
-```dart
-class DemoHeader extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Text('Interactive Counter App');
-  }
-}
-```
-
-### Stateful Widget Example
-```dart
-class CounterSection extends StatefulWidget {
-  @override
-  State<CounterSection> createState() => _CounterSectionState();
-}
-```
+## Flutter DevTools
+- Widget Inspector used to inspect widget tree
+- UI components highlighted interactively
 
 ## Screenshots
 
-### Initial UI
-![Initial UI](CounterInitial_ui.png)
+Hot Reload Terminal
 
-### After Button Click
-![After Interaction](CounterAfter_click.png)
+![Hot Reload](HotReloadTerminal.png)
 
+Before Hot Reload
+
+![Before Hot Reload](CounterInitial_ui.png)
+
+HotReloadOutput
+
+![Hot Reload](HotReloadOutput.png)
+
+Debug Console
+
+![Debug Console](DebugConsole.png)
 
 ## Reflection
-
-Stateful widgets make Flutter apps dynamic by allowing the UI to react to user interactions.
-Separating static and reactive UI improves performance, readability, and maintainability.
+Hot Reload improves productivity by instantly applying UI changes.
+Flutter DevTools helps debug and optimize applications effectively.
