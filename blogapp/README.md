@@ -29,6 +29,8 @@ Routes are defined in main.dart using MaterialApp routes map.
 
 ![Navigation flow](NavigationFlow.png)
 
+
+
 ## Reflection
 Navigator manages screens using a stack structure where new screens
 are pushed and popped.
