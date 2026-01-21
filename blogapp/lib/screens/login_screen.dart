@@ -5,6 +5,7 @@ import 'dashboard_screen.dart';
 import 'stateless_stateful_demo.dart';
 import 'home_screen.dart';
 import 'scrollable_views.dart';
+import 'user_input_form.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -54,10 +55,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 8),
                     Text(
                       'Sign in to continue',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white70,
-                      ),
+                      style: TextStyle(fontSize: 14, color: Colors.white70),
                     ),
                   ],
                 ),
@@ -115,7 +113,9 @@ class LoginScreen extends StatelessWidget {
                   if (user != null) {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (_) => const DashboardScreen()),
+                      MaterialPageRoute(
+                        builder: (_) => const DashboardScreen(),
+                      ),
                     );
                   }
                 },
@@ -207,6 +207,27 @@ class LoginScreen extends StatelessWidget {
                 label: const Text('Navigation Demo'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UserInputForm(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.edit),
+                label: const Text('User Input Form (TextField & Validation)'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurpleAccent,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
