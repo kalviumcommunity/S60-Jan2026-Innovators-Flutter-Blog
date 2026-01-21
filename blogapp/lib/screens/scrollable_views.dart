@@ -164,11 +164,7 @@ class ScrollableViews extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          icons[index],
-                          size: 28,
-                          color: Colors.white,
-                        ),
+                        Icon(icons[index], size: 28, color: Colors.white),
                         const SizedBox(height: 6),
                         Text(
                           'Item ${index + 1}',
@@ -253,10 +249,7 @@ class ScrollableViews extends StatelessWidget {
                           color: Colors.deepPurple.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Icon(
-                          icons[index],
-                          color: Colors.deepPurple,
-                        ),
+                        child: Icon(icons[index], color: Colors.deepPurple),
                       ),
                       title: Text(
                         titles[index],
