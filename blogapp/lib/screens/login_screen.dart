@@ -6,6 +6,7 @@ import 'stateless_stateful_demo.dart';
 import 'home_screen.dart';
 import 'scrollable_views.dart';
 import 'user_input_form.dart';
+import 'state_management_demo.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -228,6 +229,27 @@ class LoginScreen extends StatelessWidget {
                 label: const Text('User Input Form (TextField & Validation)'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurpleAccent,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => StateManagementDemo(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.add_circle_outline),
+                label: const Text('State Management (setState Demo)'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),

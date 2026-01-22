@@ -1,73 +1,74 @@
-# Flutter Blog App – User Input Form & Authentication
+# Flutter Blog App – UI & State Management Demo
 
-## Project Description
+## 📌 Project Overview
+This Flutter application demonstrates core Flutter concepts through a single, well-structured app.  
+It includes authentication screens and multiple feature demos to help understand UI building, navigation, and state management in Flutter.
 
-The **User Input Form**, demonstrates how to collect and validate user input using Flutter’s `Form` and `TextFormField` widgets.
-
----
-
-## Features Implemented
-- User Login UI with Email and Password fields
-- Navigation between multiple screens using `Navigator`
-- User Input Form with validation
-- Feedback using `SnackBar`
-- Clean and modern UI design
+The app is designed using **Material UI**, clean navigation, and modular screen architecture.
 
 ---
 
-## User Input Form Feature
+## 🚀 Features Implemented
 
-The **User Input Form** is accessible from the **Login Screen** under the *Explore Features* section.
-
-### Widgets Used
-- `TextFormField` – for name and email input
-- `Form` – to manage validation logic
-- `GlobalKey<FormState>` – to track form state
-- `ElevatedButton` – to submit the form
-- `SnackBar` – to show success messages
+### 🔐 Authentication
+- Login Screen with email & password fields
+- Signup Screen for new users
+- Navigation to Dashboard after successful login
 
 ---
 
-## Code Snippet (Validation Example)
+### 🧩 Flutter Concept Demos
+
+#### 1️⃣ Stateless vs Stateful Widgets
+- Demonstrates the difference between static UI (`StatelessWidget`) and dynamic UI (`StatefulWidget`)
+- Shows how UI updates based on state changes
+
+#### 2️⃣ State Management using `setState()`
+- Simple counter application
+- Increment and decrement buttons
+- Background color changes when counter reaches a threshold
+- Demonstrates Flutter’s reactive UI model
 
 ```dart
-TextFormField(
-  decoration: InputDecoration(labelText: 'Email'),
-  validator: (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your email';
-    }
-    if (!value.contains('@')) {
-      return 'Enter a valid email address';
-    }
-    return null;
-  },
-);
+setState(() {
+  _counter++;
+});
 ```
 
-## Reflection
+### 🔹 Conditional UI Update
 
-### Why is input validation important in mobile applications?
+The background color of the screen changes dynamically:
 
-Input validation ensures that users enter correct and meaningful data. It improves app reliability, prevents incorrect submissions, and enhances user experience.
+White → Counter less than 5
 
-### Difference between TextField and TextFormField?
+Green → Counter is 5 or more
 
-- TextField: Used for simple text input without built-in validation.
+This demonstrates how Flutter reacts to state changes efficiently.
 
--TextFormField: Works with the Form widget and supports validation using the validator property.
+## 📸 Screenshots
 
-### How does form state management simplify validation?
+Initial state
+![Initial Counter State](assets/screenshots/counter_initial.png)
 
-Using GlobalKey<FormState> allows validation of all form fields together. It simplifies checking input values and handling form submission efficiently.
+Updated state
+![Initial Counter State](assets/screenshots/counter_initial.png)
 
-## Screenshots
+## 💡 Key Learnings
 
-User Input Form (Before Input)
-![User Input Form (Before Input)](UserInputForm.png)
+#### StatelessWidget
 
-Validation Error Messages
-![Validation Error Messages](ValidationErrMsg.png)
+UI does not change after build
 
-Successful Form Submission
-![Successful Form Submission](SuccessSubmission.png)
+Used for static content
+
+#### StatefulWidget
+
+UI updates dynamically
+
+Maintains internal state
+
+#### setState()
+
+Notifies Flutter to rebuild only the affected widget tree
+
+Essential for Flutter’s reactive UI model
