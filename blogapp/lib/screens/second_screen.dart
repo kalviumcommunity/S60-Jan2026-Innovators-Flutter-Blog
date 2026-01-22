@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/index.dart';
 
 class SecondScreen extends StatelessWidget {
   const SecondScreen({super.key});
@@ -41,11 +42,7 @@ class SecondScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      const Icon(
-                        Icons.done,
-                        size: 64,
-                        color: Colors.green,
-                      ),
+                      const Icon(Icons.done, size: 64, color: Colors.green),
                       const SizedBox(height: 16),
                       const Text(
                         'Second Screen',
@@ -59,29 +56,27 @@ class SecondScreen extends StatelessWidget {
                       const SizedBox(height: 12),
                       Text(
                         'You have successfully navigated to this screen!',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 24),
-                      ElevatedButton.icon(
+                      CustomButton(
+                        label: 'Back to Home',
+                        icon: Icons.arrow_back,
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: const Icon(Icons.arrow_back),
-                        label: const Text('Back to Home'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepPurple,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 32,
-                            vertical: 16,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      LikeButton(
+                        onLikeChanged: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('You liked this screen!'),
+                              duration: Duration(milliseconds: 500),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

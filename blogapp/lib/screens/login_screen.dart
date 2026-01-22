@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
+import '../widgets/index.dart';
 import 'signup_screen.dart';
 import 'dashboard_screen.dart';
 import 'stateless_stateful_demo.dart';
@@ -62,50 +63,24 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              TextField(
+              CustomTextField(
                 controller: emailController,
-                decoration: InputDecoration(
-                  labelText: "Email",
-                  hintText: "Enter your email",
-                  prefixIcon: const Icon(Icons.email, color: Colors.deepPurple),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(
-                      color: Colors.deepPurple,
-                      width: 2,
-                    ),
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[50],
-                ),
+                labelText: "Email",
+                hintText: "Enter your email",
+                prefixIcon: Icons.email,
+                keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 16),
-              TextField(
+              CustomTextField(
                 controller: passwordController,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  hintText: "Enter your password",
-                  prefixIcon: const Icon(Icons.lock, color: Colors.deepPurple),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(
-                      color: Colors.deepPurple,
-                      width: 2,
-                    ),
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[50],
-                ),
+                labelText: "Password",
+                hintText: "Enter your password",
+                prefixIcon: Icons.lock,
                 obscureText: true,
               ),
               const SizedBox(height: 24),
-              ElevatedButton(
+              CustomButton(
+                label: "Login",
                 onPressed: () async {
                   final user = await auth.login(
                     emailController.text,
@@ -120,17 +95,6 @@ class LoginScreen extends StatelessWidget {
                     );
                   }
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: const Text(
-                  "Login",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
               ),
               const SizedBox(height: 12),
               TextButton(

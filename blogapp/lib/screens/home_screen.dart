@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'second_screen.dart';
+import '../widgets/index.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -60,14 +61,13 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(height: 12),
                       Text(
                         'Navigate to explore more screens',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 24),
-                      ElevatedButton.icon(
+                      CustomButton(
+                        label: 'Go to Second Screen',
+                        icon: Icons.arrow_forward,
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -76,18 +76,6 @@ class HomeScreen extends StatelessWidget {
                             ),
                           );
                         },
-                        icon: const Icon(Icons.arrow_forward),
-                        label: const Text('Go to Second Screen'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepPurple,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 32,
-                            vertical: 16,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
                       ),
                     ],
                   ),
